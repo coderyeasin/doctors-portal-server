@@ -5,26 +5,18 @@ const admin = require("firebase-admin");
 require('dotenv').config()
 const { MongoClient } = require('mongodb');
 
-
-
 const port = process.env.PORT || 5000
 
 //firebase admin connceted
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
 
-admin.initializeApp({
+admin.initializeApp({ 
   credential: admin.credential.cert(serviceAccount)
 });
-
 
 //middleware
 app.use(cors());
 app.use(express.json());
-
-//doctordb
-//aZMbZRTJts6C5vjI
-
-
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.yrxsm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -48,11 +40,6 @@ async function verifyfToken(req, res, next) {
   }
   next()
 }
-
-
-
-
-
 
 ////////////////////////////////// main function for API
 async function run() {
@@ -145,22 +132,12 @@ async function run() {
         // res.json(result)
     })
 
-
-
-
     }
     finally {
         // await client.close()
     }
 }
 run().catch(console.dir)
-
-
-
-
-
-
-
 
 app.get('/', (req, res) => {
   res.send('Hello Doctors Portal')
