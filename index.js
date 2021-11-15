@@ -99,7 +99,7 @@ async function run() {
         res.json(result);
       })
 
-///////////////////get all doctors
+/////////////get all doctors
       app.get('/doctors', async (req, res) => {
         const cursor = doctorsCollection.find({});
         const doctors = await cursor.toArray();
@@ -107,7 +107,7 @@ async function run() {
       })
 
 
-////////////////////doctor image-info/////////////////
+//////////////doctor image-info/////////////////
       app.post('/doctors', async(req, res) => {
         // console.log('body', req.body);
         const name = req.body.name;
